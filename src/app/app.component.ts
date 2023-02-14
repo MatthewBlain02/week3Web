@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MovieService } from './movie.service';
 
 @Component({
   selector: 'app-root',
@@ -6,12 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'movie-list';
+  title = 'Movie-List'
+  studentName = 'Matthew Blain'
+  studentId = 'S00211783'
+  movies = {} as any;
 
-  moviesList = [
-    {id:1, title: 'The GodFather', year : '1972', director : 'Francis Ford Coppola'},
-    {id:1, title: 'Millers Crossing', year : '1990', director : 'The Coen Brothers'},
-    {id:1, title: 'Dial M For Murder', year : '1954', director : 'Alfred Hitchcock'},
-    {id:1, title: 'Whiplash', year : '2014', director : 'Damien Chazelle'}
-  ];
+  constructor(private movieService: MovieService){}
+
+  ngOnInit(){
+    this.movies = this.movieService.getMovies();
+  }
+
 }
